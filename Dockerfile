@@ -3,7 +3,7 @@ FROM golang:1.20.4-alpine3.17
 EXPOSE 9000
 
 RUN apk update \
-  && apk add --no-cache \
+  && apk add --no-cache \ 
   mysql-client \
   build-base
 
@@ -12,14 +12,13 @@ WORKDIR /app
 
 COPY go.mod .
 COPY go.sum .
-
 RUN go mod download
 COPY . .
 COPY ./grpc_entrypoint.sh /usr/local/bin/grpc_entrypoint.sh
 RUN /bin/chmod +x /usr/local/bin/grpc_entrypoint.sh
 
 RUN go build cmd/main.go
-RUN mv main /usr/local/bin
+RUN mv main /usr/local/bin/
 
 CMD ["main"]
 ENTRYPOINT ["grpc_entrypoint.sh"]

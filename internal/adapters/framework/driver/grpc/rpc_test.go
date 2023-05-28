@@ -7,10 +7,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/aman-singh7/go-hex-arch/internal/adapters/app/api"
-	"github.com/aman-singh7/go-hex-arch/internal/adapters/core/arithmetic"
 	"github.com/aman-singh7/go-hex-arch/internal/adapters/framework/driven/db"
 	"github.com/aman-singh7/go-hex-arch/internal/adapters/framework/driver/grpc/pb"
+	"github.com/aman-singh7/go-hex-arch/internal/application/api"
+	"github.com/aman-singh7/go-hex-arch/internal/application/core/arithmetic"
 	"github.com/aman-singh7/go-hex-arch/internal/ports"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
@@ -34,14 +34,13 @@ func init() {
 	var appAdapter ports.APIPort
 	var gRPCAdapter ports.GRPCPort
 
-	dbDriver := os.Getenv("DB_DRIVE")
+	dbDriver := os.Getenv("DB_DRIVER")
 	dsourceName := os.Getenv("DS_NAME")
 
 	dbAdapter, err = db.NewAdapter(dbDriver, dsourceName)
 	if err != nil {
 		log.Fatalf("failed to initiate db conn: %v", err)
 	}
-	defer dbAdapter.CloseDbConnection()
 
 	core = arithmetic.NewAdapter()
 

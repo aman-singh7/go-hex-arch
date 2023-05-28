@@ -2,6 +2,7 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"time"
 
@@ -33,6 +34,7 @@ func NewAdapter(driverName, dataSourceName string) (*DbAdapter, error) {
 
 func (d *DbAdapter) CloseDbConnection() {
 	err := d.db.Close()
+	fmt.Println("db is closing")
 	if err != nil {
 		log.Fatalf("db close failure: %v", err)
 	}

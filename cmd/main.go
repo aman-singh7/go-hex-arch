@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/aman-singh7/go-hex-arch/internal/adapters/app/api"
-	"github.com/aman-singh7/go-hex-arch/internal/adapters/core/arithmetic"
 	"github.com/aman-singh7/go-hex-arch/internal/adapters/framework/driven/db"
+	"github.com/aman-singh7/go-hex-arch/internal/application/api"
+	"github.com/aman-singh7/go-hex-arch/internal/application/core/arithmetic"
 	"github.com/aman-singh7/go-hex-arch/internal/ports"
 
 	gRPC "github.com/aman-singh7/go-hex-arch/internal/adapters/framework/driver/grpc"
